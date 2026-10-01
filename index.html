@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAMCHAT</title>
+<style>
+body{font-family:Arial;margin:0;background:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:15px}
+.card{background:#f8f9fa;border-radius:20px;padding:15px;text-align:center;text-decoration:none;color:#333;cursor:pointer}
+.icon{font-size:32px}
+/* PAGE PUB 5s */
+#pubPage{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:999;text-align:center;padding:30px;box-sizing:border-box}
+</style>
+</head>
+<body>
+
+<div id="main">
+<h3 style="padding-left:15px">KAMCHAT - Services</h3>
+<div class="grid">
+<div class="card" onclick="showPub('hotel')"><div class="icon">🏨</div>Hotel</div>
+<div class="card" onclick="showPub('resto')"><div class="icon">🍽️</div>Restaurant</div>
+<div class="card" onclick="showPub('car')"><div class="icon">🚗</div>Car rental</div>
+<div class="card" onclick="showPub('courses')"><div class="icon">🎓</div>Courses</div>
+<div class="card" onclick="showPub('pharma')"><div class="icon">💊</div>Pharmacy</div>
+<div class="card" onclick="showPub('tele')"><div class="icon">🩺</div>Teleconsult</div>
+<div class="card" onclick="showPub('jeux')"><div class="icon">🎲</div>Mini-jeux</div>
+<div class="card" onclick="showPub('jobs')"><div class="icon">💼</div>Jobs</div>
+<div class="card" onclick="showPub('tech')"><div class="icon">🔧</div>Techniciens</div>
+</div>
+</div>
+
+<!-- PAGE PUB 5 SECONDES -->
+<div id="pubPage">
+<h2 style="color:green">KAMCHAT</h2>
+<p>Chargement de <b id="siteName"></b>...</p>
+<h1 style="color:green;font-size:50px" id="count">5</h1>
+<p>Publicité</p>
+<div style="background:#f0f0f0;border:2px dashed #ccc;height:200px;display:flex;align-items:center;justify-content:center;margin:20px 0">
+  TA PUB ADSENSE ICI<br>Tu gagnes ici
+</div>
+<p style="color:#999;font-size:12px">Redirection automatique vers le site officiel</p>
+</div>
+
+<script>
+const FINAL_SITES = {
+  hotel: "https://www.booking.com/city/cm/yaounde.fr.html",
+  resto: "https://www.tripadvisor.fr/Restaurants-g293211-Yaounde_Centre_Region.html",
+  car: "https://alicya-auto.com",
+  courses: "https://cuty.io/DP9Nefl",
+  pharma: "https://exe.io/8LSKy",
+  tele: "https://clksz.com/mxrfAbm",
+  jeux: "https://linkjust.com/KUg467",
+  jobs: "https://cuty.io/1wu6Yi1",
+  tech: "https://linkjust.com/s3e6wt7a9"
+};
+
+function showPub(type){
+  document.getElementById('main').style.display='none';
+  document.getElementById('pubPage').style.display='block';
+  document.getElementById('siteName').innerText=type;
+  let s=5;
+  document.getElementById('count').innerText=s;
+  let timer=setInterval(()=>{
+    s--;
+    document.getElementById('count').innerText=s;
+    if(s<=0){
+      clearInterval(timer);
+      window.location.href = FINAL_SITES[type];
+    }
+  },1000);
+}
+</script>
+
+</body>
+  </html>
