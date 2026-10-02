@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GELDS KAMCHAT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fff;padding-bottom:90px}
+.grid12{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:15px}
+.btn{padding:18px 5px;border-radius:18px;border:none;font-weight:900;font-size:12px;cursor:pointer}
+.black{background:#111;color:#fff}.green{background:#16a34a;color:#fff}.yellow{background:#facc15;color:#000;border:2px solid #000}
+#pub{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column}
+#pubTop{padding:12px;background:#111;color:#fff;display:flex;justify-content:space-between;font-weight:900;font-size:13px}
+#pubContent{flex:1;position:relative;background:#000;overflow:hidden}
+#fallback{position:absolute;inset:0;display:flex;flex-direction:column}
+#fallback img{width:100%;height:100%;object-fit:cover}
+#fallbackText{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.95));color:#fff;padding:20px 15px}
+#pubFrame{width:100%;height:100%;border:0;position:absolute;z-index:2;opacity:0.01}
+#goBar{padding:12px;background:#111;text-align:center}
+#goBtn{width:100%;background:#222;color:#888;padding:18px;border-radius:50px;border:none;font-weight:900;font-size:16px}
+#goBtn.active{background:#16a34a;color:#fff}
+.videos{background:#000;margin:15px;border-radius:16px;padding:12px}
+.grid6{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v{border-radius:12px;overflow:hidden;background:#222;height:160px}
+.v video{width:100%;height:100%;object-fit:cover}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:10px 0;font-size:11px;font-weight:900}
+</style>
+</head>
+<body>
+
+<div style="padding:15px;border-bottom:1px solid #eee"><b style="color:#16a34a">GELDS 🎁 KAMCHAT</b></div>
+
+<div class="grid12">
+<button class="btn black" onclick="lancer('https://shrinkme.click/kamchat-hotel-final','https://www.booking.com/city/cm/yaounde.fr.html','hotel-piscine.jpg','Hôtel Yaoundé - Piscine')">🏨 Hotel</button>
+<button class="btn black" onclick="lancer('https://shrinkme.click/Cpnr','https://www.jumia.com.cm','resto.jpg','Restaurant VIP')">🍔 Resto</button>
+<button class="btn black" onclick="lancer('https://shrinkme.click/kamchat-pharma','https://waspito.com','pharma.jpg','Pharmacie')">💊 Pharma</button>
+<button class="btn green" onclick="lancer('https://shrinkme.click/kamchat-myjob','https://myjob.cm','freelance.jpg','MyJob - Travail en ligne')">💼 MyJob</button>
+<button class="btn green" onclick="lancer('https://shrinkme.click/kamchat-waspito','https://www.waspito.com','medecins.jpg','Waspito Médecins')">🩺 Waspito</button>
+<button class="btn green" onclick="lancer('https://shrinkme.click/kamchat-emploi','https://www.emploi.cm','freelance.jpg','Emploi Freelance')">💼 Emploi</button>
+<button class="btn yellow" onclick="lancer('https://shrinkme.click/kamchat-car','https://www.jumia.com.cm/vehicules/','voiture.jpg','Kia Sportage')">🚗 Car</button>
+<button class="btn yellow" onclick="lancer('https://shrinkme.click/kamchat-jeux','https://www.crazygames.com','salon.jpg','Salon Meublé - Jeux')">🎮 Jeux</button>
+<button class="btn yellow" onclick="lancer('https://shrinkme.click/kamchat-tech','https://www.jumia.com.cm','reparation.jpg','Dépannage Tech')">🔧 Tech</button>
+<button class="btn black" onclick="lancer('https://shrinkme.click/kamchat-gozem','https://www.gozem.co','voiture.jpg','Gozem Livraison')">🛵 Livraison</button>
+<button class="btn green" onclick="lancer('https://shrinkme.click/kamchat-formation','https://www.minfopra.gov.cm','tourisme.jpg','Découvrir Cameroun')">📚 Formation</button>
+<button class="btn yellow" onclick="lancer('https://shrinkme.click/kamchat-logement','https://kamerhouse.com','salon.jpg','Logement Yaoundé')">🏠 Logement</button>
+</div>
+
+<div class="videos">
+<p style="color:#fff;font-size:12px;font-weight:900;margin-bottom:10px">📺 Vidéos Yaoundé</p>
+<div class="grid6">
+<div class="v"><video controls playsinline poster="images/salon.jpg" src="videos/video1.mp4"></video></div>
+<div class="v"><video controls playsinline poster="images/hotel-piscine.jpg" src="videos/video2.mp4"></video></div>
+<div class="v"><video controls playsinline poster="images/resto.jpg" src="videos/video3.mp4"></video></div>
+<div class="v"><video controls playsinline poster="images/voiture.jpg" src="videos/video4.mp4"></video></div>
+<div class="v"><video controls playsinline poster="images/tourisme.jpg" src="videos/video5.mp4"></video></div>
+<div class="v"><video controls playsinline poster="images/freelance.jpg" src="videos/video6.mp4"></video></div>
+</div>
+</div>
+
+<div id="pub">
+<div id="pubTop"><span id="pubName">GELDS</span><span id="cpt">5s</span></div>
+<div id="pubContent">
+<div id="fallback">
+<img id="fallbackImg" src="">
+<div id="fallbackText">
+<h3 id="fallbackTitle"></h3>
+<p style="font-size:11px;color:#16a34a;margin-top:4px;font-weight:900">GELDS KAMCHAT • Partenaire vérifié Yaoundé</p>
+<p style="font-size:10px;color:#ccc;margin-top:6px">Annonce sponsorisée</p>
+</div>
+</div>
+<iframe id="pubFrame" src=""></iframe>
+</div>
+<div id="goBar"><button id="goBtn" onclick="goVrai()">⏳ <span id="cpt2">5</span>s</button></div>
+</div>
+
+<div class="nav"><span style="color:#16a34a">🏠 Accueil</span><span>👥 Contacts</span><span>🧭 Découvrir</span><span>👤 Moi</span></div>
+
+<script>
+let vraiLien=""
+function lancer(court, vrai, img, title){
+ vraiLien=vrai
+ window.open(court,'_blank')
+ document.getElementById
