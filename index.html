@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GELDS KAMCHAT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fff;padding-bottom:80px}
+.grid12{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:15px}
+.btn{padding:18px 5px;border-radius:18px;border:none;font-weight:900;font-size:12px}
+.black{background:#111;color:#fff}
+.green{background:#16a34a;color:#fff}
+.yellow{background:#facc15;color:#000;border:2px solid #000}
+.videos{background:#000;margin:15px;border-radius:16px;padding:12px}
+.grid6{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v{border-radius:12px;overflow:hidden;background:#222}
+.v iframe{width:100%;height:170px;border:0}
+.v span{color:#fff;font-size:10px;padding:4px;display:block}
+#pub{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column}
+#pubTop{display:flex;justify-content:space-between;padding:10px;background:#111;color:#facc15;font-weight:900}
+#pubFrame{flex:1;width:100%;border:0;background:#fff}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:10px;font-size:11px;font-weight:900}
+</style>
+</head>
+<body>
+
+<div style="padding:15px;border-bottom:1px solid #eee;display:flex;justify-content:space-between"><b style="color:#16a34a">GELDS 🎁 KAMCHAT</b><small>PAYANT 5s</small></div>
+
+<div class="grid12">
+<button class="btn black" onclick="lancer('https://shrinkme.click/kamchat-hotel-final','https://www.booking.com/city/cm/yaounde.fr.html')">🏨 Hotel</button>
+<button class="btn black" onclick="lancer('https://shrinkme.click/Cpnr','https://www.jumia.com.cm/restaurants/')">🍔 Resto</button>
+<button class="btn black" onclick="lancer('https://srnky.com/FJi7r05baJ8','https://waspito.com')">💊 Pharma</button>
+<button class="btn green" onclick="lancer('https://clksz.com/mxrfAbm','https://www.myjob.cm')">💼 MyJob</button>
+<button class="btn green" onclick="lancer('https://shrinkme.click/kamchat-hotel-test','https://www.waspito.com')">🩺 Waspito</button>
+<button class="btn green" onclick="lancer('https://clksz.com/Fme4','https://www.emploi.cm')">💼 Emploi</button>
+<button class="btn yellow" onclick="lancer('https://exe.io/8LSKy','https://www.jumia.com.cm/vehicules/')">🚗 Car</button>
+<button class="btn yellow" onclick="lancer('https://clksz.com/5FLBwBQXy5','https://www.crazygames.com')">🎮 Jeux</button>
+<button class="btn yellow" onclick="lancer('https://exe.io/vpj6tr','https://www.jumia.com.cm/')">🔧 Tech</button>
+<button class="btn black" onclick="lancer('https://shrinkme.click/kamchat-hotel-final','https://www.gozem.co')">🛵 Livraison</button>
+<button class="btn green" onclick="lancer('https://srnky.com/FJi7r05baJ8','https://www.minfopra.gov.cm')">📚 Formation</button>
+<button class="btn yellow" onclick="lancer('https://clksz.com/mxrfAbm','https://kamerhouse.com')">🏠 Logement</button>
+</div>
+
+<div class="videos">
+<p>📺 Videos Yaoundé - 6 vidéos</p>
+<div class="grid6">
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" allowfullscreen></iframe><span>Marché Central</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" allowfullscreen></iframe><span>Cuisine</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" allowfullscreen></iframe><span>Startup</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" allowfullscreen></iframe><span>Sport</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" allowfullscreen></iframe><span>Formation</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" allowfullscreen></iframe><span>Immobilier</span></div>
+</div>
+</div>
+
+<!-- PUB = LIEN COURT EN PLEIN ECRAN + AUTO VRAI SITE APRES 5s -->
+<div id="pub">
+<div id="pubTop"><span>PUB PAYANTE 💰</span><span id="cpt">5s</span></div>
+<iframe id="pubFrame" src=""></iframe>
+<div style="padding:10px;background:#111;text-align:center"><button id="btnGo" onclick="goVrai()" style="display:none;background:#16a34a;color:#fff;padding:15px 25px;border-radius:50px;border:none;font-weight:900">👉 ALLER VERS LE SITE (auto dans <span id="cpt2">0</span>s)</button></div>
+</div>
+
+<div class="nav"><span style="color:#16a34a">🏠 Accueil</span><span>👥 Contacts</span><span>🧭 Découvrir</span><span>👤 Moi</span></div>
+
+<script>
+let vraiLien="", courtLien=""
+function lancer(court, vrai){
+ courtLien=court; vraiLien=vrai;
+ document.getElementById('pubFrame').src=court; // LE LIEN COURT S'AFFICHE COMME PUB
+ document.getElementById('pub').style.display='flex';
+ document.getElementById('btnGo').style.display='none';
+ let c=5;
+ document.getElementById('cpt').innerText=c+"s";
+ let t=setInterval(()=>{
+  c--; document.getElementById('cpt').innerText=c+"s"; document.getElementById('cpt2').innerText=c;
+  if(c<=0){
+   clearInterval(t);
+   document.getElementById('cpt').innerText="✓";
+   document.getElementById('btnGo').style.display='block';
+   // AUTO OUVRE LE VRAI SITE APRES 5s COMME TU VEUX
+   setTimeout(()=>{ goVrai() }, 1000);
+  }
+ },1000)
+}
+function goVrai(){
+ window.open(vraiLien,'_blank');
+ document.getElementById('pub').style.display='none';
+ document.getElementById('pubFrame').src="";
+ // Si iframe bloqué par shrinkme, on ouvre quand même en nouvel onglet pour que tu sois payé
+ if(document.getElementById('pubFrame').src=="") window.open(courtLien,'_blank');
+}
+</script>
+</body>
+  </html>
