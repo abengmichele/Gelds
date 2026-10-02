@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GELDS - KAMCHAT Yaoundé</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:Arial;padding-bottom:80px}</style>
+</head>
+<body class="bg-white">
+
+<div class="flex justify-between p-4 border-b">
+<div><b class="text-green-600 text-xl">GELDS 🎁</b><br><span class="text-xs text-gray-500">WeChat Africain - Yaoundé</span></div>
+<div class="text-right text-xs"><span id="vues">0</span> vues<br><b id="gain" class="text-green-600">0 FCFA</b></div>
+</div>
+
+<div class="bg-black text-white p-2 flex justify-between text-xs font-bold">
+<span>💰 GAIN: <b id="dGain2" class="text-yellow-400">0 FCFA</b></span>
+<span>⏱️ <b id="temps">0s</b></span>
+<span class="text-green-400">PAYÉ 25 DEC</span>
+</div>
+
+<div class="p-4 flex justify-between"><b>Services</b><span class="text-green-600 text-xs">12 sites vérifiés</span></div>
+
+<div class="grid grid-cols-3 gap-3 px-4">
+<button onclick="openSite('https://www.booking.com/city/cm/yaounde.fr.html','Hotel')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">🏨<br>Hotel</button>
+<button onclick="openSite('https://www.tripadvisor.fr/Restaurants-g298390-Yaounde_Centre_Region.html','Resto')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">🍔<br>Resto</button>
+<button onclick="openSite('https://www.monpharmacien.cm/pharmacies/yaounde','Pharma')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">💊<br>Pharma</button>
+<button onclick="openSite('https://fne.cm','FNE')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">💼<br>FNE</button>
+<button onclick="openSite('https://waspito.com','Waspito')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">🩺<br>Waspito</button>
+<button onclick="openSite('https://www.emploi.cm','Emploi')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">💼<br>Emploi</button>
+<button onclick="openSite('https://alicya-auto.com/fr/location-de-voitures-a-yaounde-cameroun/','Car Rental')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs font-black border-2 border-black">🚗<br>Car Rental</button>
+<button onclick="openSite('https://www.crazygames.com','Jeux')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs">🎮<br>Jeux</button>
+<button onclick="openSite('https://www.jumia.com.cm','Tech')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs">🔧<br>Tech</button>
+<button onclick="openSite('https://glovoapp.com/cm/fr/yaounde/','Livraison')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">🛵<br>Livraison</button>
+<button onclick="openSite('https://www.minefop.gov.cm','Formation')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">📚<br>Formation</button>
+<button onclick="openSite('https://www.camerounmaison.com','Logement')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs">🏠<br>Logement</button>
+</div>
+
+<div class="bg-black mt-6 p-4">
+<div class="grid grid-cols-2 gap-2">
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" class="w-full h-48 rounded-xl bg-zinc-900"></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" class="w-full h-48 rounded-xl bg-zinc-900"></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1404166711249147/&show_text=false" class="w-full h-48 rounded-xl bg-zinc-900"></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1818182712682361/&show_text=false" class="w-full h-48 rounded-xl bg-zinc-900"></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/2600188100430700/&show_text=false" class="w-full h-48 rounded-xl bg-zinc-900"></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/2014627569309082/&show_text=false" class="w-full h-48 rounded-xl bg-zinc-900"></iframe>
+</div>
+</div>
+
+<div id="pub" class="fixed inset-0 bg-black/95 z-[999] hidden flex-col items-center justify-center p-6 text-center text-white">
+<h3 id="pubTitle" class="text-xl font-black text-yellow-400">PUB 5s</h3>
+<p id="count" class="text-6xl font-black my-4 text-yellow-400">5</p>
+<video src="VID-20261002-WA6739.mp4" autoplay muted loop playsinline class="w-full max-w-[320px] rounded-xl my-3"></video>
+<p class="text-xs text-gray-400">patientez...</p>
+<button id="goBtn" class="bg-green-600 text-white px-8 py-4 rounded-full font-black mt-4 hidden">👉 ALLER VERS LE SITE</button>
+<button onclick="document.getElementById('pub').style.display='none'" class="text-gray-500 mt-4 text-xs">Fermer X</button>
+</div>
+
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-2 text-[11px] font-bold">
+<div class="text-green-600">🏠<br>Accueil</div><div class="text-gray-400">👥<br>Contacts</div><div class="text-gray-400">🧭<br>Découvrir</div><div class="text-green-600">👤<br>Moi - <span id="dGain3">0F</span></div>
+</div>
+
+<script>
+let vues=parseInt(localStorage.getItem('vues')||0)
+let temps=parseInt(localStorage.getItem('temps')||0)
+let lienEnCours=""
+function refresh(){
+ document.getElementById('vues').innerText=vues
+ document.getElementById('temps').innerText=temps+'s'
+ document.getElementById('gain').innerText=(temps*10)+' FCFA'
+ document.getElementById('dGain2').innerText=(temps*10)+' FCFA'
+ document.getElementById('dGain3').innerText=(temps*10)+'F'
+}
+refresh()
+function openSite(url,nom){
+ lienEnCours=url
+ document.getElementById('pubTitle').innerText=nom+" - PUB 5s"
+ document.getElementById('pub').style.display='flex'
+ document.getElementById('goBtn').style.display='none'
+ let c=5
+ document.getElementById('count').innerText=c
+ let t=setInterval(()=>{
+  c--;document.getElementById('count').innerText=c
+  if(c<=0){
+   clearInterval(t)
+   document.getElementById('count').innerText="OK!"
+   let btn=document.getElementById('goBtn')
+   btn.style.display='block'
+   btn.onclick=()=>{
+    vues++;temps+=5
+    localStorage.setItem('vues',vues);localStorage.setItem('temps',temps)
+    refresh()
+    window.open(lienEnCours,'_blank')
+    document.getElementById('pub').style.display='none'
+   }
+  }
+ },1000)
+}
+</script>
+</body>
+</html>
