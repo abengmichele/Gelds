@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GELDS - KAMCHAT</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white pb-24">
+<div class="flex justify-between p-4 border-b">
+<b class="text-green-600 text-xl">GELDS 🎁</b><span class="text-xs text-green-600 font-bold">12/12 PAYANT</span>
+</div>
+<div class="grid grid-cols-3 gap-3 px-4 mt-4">
+<button onclick="openSite('https://shrinkme.click/kamchat-hotel-final','https://www.booking.com/city/cm/yaounde.fr.html')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">🏨<br>Hotel</button>
+<button onclick="openSite('https://shrinkme.click/Cpnr','https://www.jumia.com.cm/restaurants/')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">🍔<br>Resto</button>
+<button onclick="openSite('https://srnky.com/FJi7r05baJ8','https://waspito.com')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">💊<br>Pharma</button>
+<button onclick="openSite('https://clksz.com/mxrfAbm','https://www.myjob.cm')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">💼<br>MyJob</button>
+<button onclick="openSite('https://shrinkme.click/kamchat-hotel-test','https://www.waspito.com')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">🩺<br>Waspito</button>
+<button onclick="openSite('https://clksz.com/Fme4','https://www.emploi.cm')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">💼<br>Emploi</button>
+<button onclick="openSite('https://exe.io/8LSKy','https://www.jumia.com.cm/vehicules/')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs border-2 border-black">🚗<br>Car</button>
+<button onclick="openSite('https://clksz.com/5FLBwBQXy5','https://www.crazygames.com')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs">🎮<br>Jeux</button>
+<button onclick="openSite('https://exe.io/vpj6tr','https://www.jumia.com.cm/')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs">🔧<br>Tech</button>
+<button onclick="openSite('https://shrinkme.click/kamchat-hotel-final','https://www.gozem.co')" class="bg-zinc-900 text-white rounded-2xl p-4 text-xs">🛵<br>Livraison</button>
+<button onclick="openSite('https://srnky.com/FJi7r05baJ8','https://www.minfopra.gov.cm')" class="bg-green-600 text-white rounded-2xl p-4 text-xs">📚<br>Formation</button>
+<button onclick="openSite('https://clksz.com/mxrfAbm','https://kamerhouse.com')" class="bg-yellow-400 text-black rounded-2xl p-4 text-xs">🏠<br>Logement</button>
+</div>
+<div class="bg-black mt-6 mx-4 rounded-2xl p-3">
+<p class="text-white text-xs mb-2 font-black">📺 Vidéos Yaoundé</p>
+<div class="grid grid-cols-2 gap-3">
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" class="w-full h-[200px] rounded-xl bg-zinc-900" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" class="w-full h-[200px] rounded-xl bg-zinc-900" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" class="w-full h-[200px] rounded-xl bg-zinc-900" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" class="w-full h-[200px] rounded-xl bg-zinc-900" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" class="w-full h-[200px] rounded-xl bg-zinc-900" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" class="w-full h-[200px] rounded-xl bg-zinc-900" scrolling="no" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div id="pub" class="fixed inset-0 bg-black/95 z-[9999] hidden flex-col items-center justify-center p-6 text-center text-white">
+<h3 class="text-xl font-black text-yellow-400">PUB 5s - Tu gagnes 💰</h3>
+<p id="count" class="text-6xl font-black my-4 text-yellow-400">5</p>
+<p class="text-xs text-gray-400">ta pub payante charge...</p>
+<button id="goBtn" class="bg-green-600 text-white px-8 py-4 rounded-full font-black mt-6 hidden">👉 ALLER VERS LE SITE</button>
+</div>
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-2 text-[11px] font-bold"><div class="text-green-600">🏠<br>Accueil</div><div class="text-gray-400">👥<br>Contacts</div><div class="text-gray-400">🧭<br>Découvrir</div><div class="text-gray-400">👤<br>Moi</div></div>
+<script>
+let lienCourt="", lienVrai=""
+function openSite(court, vrai){lienCourt=court;lienVrai=vrai;document.getElementById('pub').style.display='flex';document.getElementById('goBtn').classList.add('hidden');let c=5;document.getElementById('count').innerText=c;let t=setInterval(()=>{c--;document.getElementById('count').innerText=c;if(c<=0){clearInterval(t);document.getElementById('count').innerText="✓";document.getElementById('goBtn').classList.remove('hidden')}},1000)}
+document.getElementById('goBtn').onclick=()=>{window.open(lienCourt,'_blank');setTimeout(()=>window.open(lienVrai,'_blank'),1000);document.getElementById('pub').style.display='none'}
+</script>
+</body>
+  </html>
