@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GELDS</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#000 url('argent.jpg');background-size:cover}
+.header{text-align:center;color:gold;padding:15px;font-size:24px;font-weight:bold;background:rgba(0,0,0,0.7)}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px}
+.icon{background:rgba(255,255,255,0.9);border-radius:15px;padding:20px;text-align:center;text-decoration:none;color:#000}
+.icon span{font-size:30px;display:block}
+.bottom{position:fixed;bottom:0;width:100%;display:flex;background:#111;color:#fff}
+.bottom a{flex:1;text-align:center;padding:15px;color:#fff;text-decoration:none}
+.bottom a.active{color:gold}
+#messagerie, #moments{display:none;padding:20px;color:#fff}
+</style>
+</head>
+<body>
+
+<div class="header">GELDS - MyJob MyMoney</div>
+
+<div id="accueil" class="grid">
+<a class="icon" href="TON-LIEN-BOOKING-ICI"><span>🏨</span>Hôtel</a>
+<a class="icon" href="TON-LIEN-SHRINKME-MYJOB"><span>💼</span>MyJob</a>
+<a class="icon" href="TON-LIEN-EXE-EMPLOI"><span>📄</span>Emploi</a>
+<a class="icon" href="TON-LIEN-OUO-CAR"><span>🚗</span>Car</a>
+<a class="icon" href="TON-LIEN-JEUX"><span>🎮</span>Jeux</a>
+<a class="icon" href="TON-LIEN-TECH"><span>💻</span>Tech</a>
+</div>
+
+<div id="moments">
+<h3>Moments</h3>
+<p>Les gars postent ici leurs photos hôtel, trajet, etc.</p>
+<div style="background:#fff;color:#000;padding:10px;border-radius:10px;margin-top:10px">Ex: Belle chambre à Bastos - 15k 📸</div>
+</div>
+
+<div id="messagerie">
+<h3>Messagerie</h3>
+<p>Chat contacts + Hôtel + Car</p>
+<div style="background:#fff;color:#000;padding:10px;border-radius:10px">Salut, chambre dispo ? - Hôtel La Falaise</div>
+</div>
+
+<div class="bottom">
+<a onclick="show('accueil')" class="active">Accueil</a>
+<a onclick="show('moments')">Moments</a>
+<a onclick="show('messagerie')">Messagerie</a>
+<a>Profil</a>
+</div>
+
+<script>
+function show(id){
+document.getElementById('accueil').style.display='none';
+document.getElementById('moments').style.display='none';
+document.getElementById('messagerie').style.display='none';
+if(id=='accueil') document.getElementById('accueil').style.display='grid';
+else document.getElementById(id).style.display='block';
+}
+</script>
+</body>
+</html>
