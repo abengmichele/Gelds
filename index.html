@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GELDS - SuperApp Cameroun</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- CODE TRAVELPAYOUTS - TON ID 582077 - NE PAS ENLEVER -->
+<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://tp-em.com/NTgyMDc3.js?t=582077';
+      document.head.appendChild(script);
+  })();
+</script>
+<!-- FIN CODE TRAVELPAYOUTS -->
+
+</head>
+<body class="bg-[#f5f5f5]">
+
+<div class="max-w-[430px] mx-auto bg-white min-h-screen">
+
+<!-- TON HEADER GELDS -->
+<div id="tab-chat" class="p-3">
+<h2 class="font-black">Messagerie</h2>
+<div id="msgs" class="h-[400px] overflow-y-auto"></div>
+<div class="flex gap-2 mt-2"><input id="inp" class="flex-1 border rounded-xl p-3" placeholder="Message...">
+<button onclick="showTab('home')" class="text-xs">Retour</button>
+</div>
+</div>
+
+<div id="tab-moments" class="hidden p-3">
+<h2 class="font-black">Moments</h2>
+<div id="moments-feed"></div>
+<button onclick="showTab('home')" class="text-xs text-gray-500 underline mt-4">Retour</button>
+</div>
+
+<div id="tab-home" class="p-3">
+<div class="grid grid-cols-3 gap-3" id="grid"></div>
+
+<h3 class="font-bold mt-6 pb-10">Vidéos Yaoundé 🔥</h3>
+<iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/123456"></iframe>
+</div>
+
+<!-- PUB QUI PAIE QUAND ON CLIQUE -->
+<div id="pub" class="hidden fixed inset-0 bg-black/80 z-50">
+<div class="bg-white rounded-2xl p-3 mt-40 mx-4">
+<p class="font-black">Pub ouverte dans 10s - ça te paie 0.05$</p>
+<div id="pub-content" class="my-3"></div>
+<p class="text-xs text-gray-500">Le site ne s'ouvre pas auto</p>
+<button onclick="closePub()" class="bg-black text-white w-full p-3 rounded-full font-bold mt-2">Continue, et reviens ici.</button>
+<button onclick="fermerPub()" class="w-full p-2 text-gray-400 mt-2">Fermer dans 10s...</button>
+</div>
+</div>
+
+</div>
+
+<script>
+// TES PAYANTS QUE TU AVAIS ENVOYE
+const cats = [
+  {name: "WhatsApp", pay: "https://s.cxsx.to/bA7x8f", icon:"💬", type:"tab", tab:"chat"},
+  {name: "Facebook", pay: "https://s.cxsx.to/xxxx", icon:"📘", type:"tab", tab:"moments"},
+  {name: "Emploi.cm", pay: "https://www.emploi.cm/", icon:"💼"},
+  {name: "Alio.cm", pay: "https://www.alio.cm/city/yaounde/", icon:"🏠"},
+  {name: "Jumia", pay: "https://www.jumia.com.cm/", icon:"🛒"},
+  {name: "Booking Yaoundé", pay: "https://www.booking.com/city/cm/yaounde.html", icon:"🏨"},
+  {name: "Trip.com", pay: "https://www.trip.com/hotels/yaounde/", icon:"✈️"}
+];
+
+const grid = document.getElementById('grid');
+cats.forEach(c=>{
+  let d = document.createElement('div');
+  d.className = "border rounded-xl p-3 text-center bg-gray-50 cursor-pointer";
+  d.innerHTML = `<div>${c.icon}</div><div class="text-xs font-bold">${c.name}</div>`;
+  d.onclick = ()=>openPay(c.name, c.pay, c.type, c.tab);
+  grid.appendChild(d);
+});
+
+function openPay(site, pay, type, tab){
+  // AFFICHE LA PUB
+  document.getElementById('pub').classList.remove('hidden');
+  document.getElementById('pub-content').innerHTML = `<a href="${pay}" target="_blank" class="bg-green-600 text-white p-4 block text-center rounded-xl font-black">OUVRIR ${site} - 0.05$ pour toi</a>`;
+  if(type==='tab'){
+    setTimeout(()=>{document.getElementById('tab-'+tab).classList.remove('hidden');},10000);
+  }
+}
+function closePub(){document.getElementById('pub').classList.add('hidden');}
+function fermerPub(){closePub();}
+function showTab(t){
+  document.getElementById('tab-chat').classList.add('hidden');
+  document.getElementById('tab-moments').classList.add('hidden');
+  document.getElementById('tab-home').classList.add('hidden');
+  document.getElementById('tab-'+t).classList.remove('hidden');
+}
+</script>
+</body>
+</html>
