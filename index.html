@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GELDS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#fff}
+.header{padding:14px 16px;font-weight:900;color:#0e8a4f;font-size:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}
+.card{background:#fff;border-radius:12px;border:1px solid #e5e7eb;padding:22px 5px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.label{font-size:11px;margin-top:8px;font-weight:700}
+.icon{font-size:32px}
+.videos-title{padding:18px 12px 10px;font-weight:800}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 8px 30px}
+.v{position:relative;background:#000;border-radius:12px;height:220px;overflow:hidden;color:white;display:flex;flex-direction:column;justify-content:space-between;padding:8px}
+.v-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:black}
+.page{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:50;padding:12px}
+.page.active{display:block}
+.chat-box{border:1px solid #ddd;border-radius:12px;height:75vh;margin-top:10px}
+.input{position:fixed;bottom:15px;left:12px;right:12px;display:flex;gap:8px}
+.input input{flex:1;padding:12px 16px;border-radius:20px;border:1px solid #ddd}
+.input button{background:#0f8a4f;color:white;border:none;border-radius:20px;padding:0 20px;font-weight:bold}
+/* PUB EXACT COMME VIDEO */
+#adOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0f0f0f;z-index:99;flex-direction:column;align-items:center;padding-top:60px}
+#adOverlay.active{display:flex}
+#adOverlay.topTxt{font-size:12px;color:#666;margin-bottom:10px}
+#adOverlay h1{color:#fff;font-size:80px;margin:10px 0;font-weight:300}
+.popup{position:fixed;bottom:25%;left:5%;right:5%;background:white;border-radius:16px;padding:16px;text-align:center;z-index:100}
+.popup.btn{background:#f1f5f9;border-radius:20px;padding:12px;margin-top:10px;color:#94a3b8;font-size:13px}
+.popup.btn.go{background:#0e8a4f;color:white;font-weight:800}
+.check{font-size:60px;color:white;margin-top:20px}
+</style>
+</head>
+<body>
+
+<div id="home">
+<div class="header">GELDS</div>
+<div class="grid">
+<div class="card" onclick="goAd('Messagerie')"><div class="icon">💬</div><div class="label">Messagerie</div></div>
+<div class="card" onclick="goAd('Moments')"><div class="icon">🖼️</div><div class="label">Moments</div></div>
+<div class="card" onclick="goAd('Hotel')"><div class="icon">🏨</div><div class="label">Hotel</div></div>
+<div class="card" onclick="goAd('Resto')"><div class="icon">🍔</div><div class="label">Resto</div></div>
+<div class="card" onclick="goAd('Pharma')"><div class="icon">💊</div><div class="label">Pharma</div></div>
+<div class="card" onclick="goAd('MyJob')"><div class="icon">💼</div><div class="label">MyJob</div></div>
+<div class="card" onclick="goAd('Emploi')"><div class="icon">📋</div><div class="label">Emploi</div></div>
+<div class="card" onclick="goAd('Car')"><div class="icon">🚗</div><div class="label">Car</div></div>
+<div class="card" onclick="goAd('Jeux')"><div class="icon">🎮</div><div class="label">Jeux</div></div>
+<div class="card" onclick="goAd('Tech')"><div class="icon">🔧</div><div class="label">Tech</div></div>
+<div class="card" onclick="goAd('Livraison')"><div class="icon">🛵</div><div class="label">Livraison</div></div>
+<div class="card" onclick="goAd('Forma')"><div class="icon">🎓</div><div class="label">Forma</div></div>
+<div class="card" onclick="goAd('Logement')"><div class="icon">🏠</div><div class="label">Logement</div></div>
+<div class="card" onclick="goAd('Waspito')"><div class="icon">🩺</div><div class="label">Waspito</div></div>
+</div>
+<div class="videos-title">Vidéos Yaoundé 🔥</div>
+<div class="videos">
+<div class="v"><div class="v-play">▶</div>Le Kyo VS Maman</div>
+<div class="v"><div class="v-play">▶</div>Angel Testi</div>
+</div>
+</div>
+
+<div id="p-Messagerie" class="page">
+<div>💬 <b>Messagerie</b></div>
+<div class="chat-box"></div>
+<div class="input"><input placeholder="Message..."><button>OK</button></div>
+<div style="margin-top:10px;font-size:13px;color:gray" onclick="goHome()">← Retour</div>
+</div>
+
+<div id="adOverlay">
+<div class="topTxt">Pub ouverte dans un autre onglet - ça te paie 0.05$</div>
+<h1 id="count">10</h1>
+<div id="check" class="check" style="display:none">✓</div>
+<div class="popup" id="popup">
+<b>Si le site ne s'ouvre pas auto :</b><br>
+<span style="font-size:12px;color:#555">Clique sur "Continuer" dans l'autre onglet puis reviens ici.</span>
+<div class="btn" id="btnTxt">Bouton dans 10s...</div>
+<div style="margin-top:10px;color:#999;font-size:13px" onclick="closeAd()">Fermer</div>
+</div>
+</div>
+
+<script>
+// 1. TES LIENS PUB QUI TE PAIE
+const PUB_LINKS = [
+ "https://shrinkme.click/ka...",
+ "https://clksz.com/5FLBw",
+ "https://shrinkme.click/...",
+ "https://clksz.com/..."
+];
+
+// 2. LES VRAIS SITES QUI S'OUVRENT APRES (comme ta vidéo booking.com)
+const REAL_LINKS = {
+ "Hotel": "https://www.booking.com/city/cm/yaounde.fr.html",
+ "Resto": "https://glovoapp.com/cm/fr/yaounde/",
+ "Pharma": "https://www.google.com/maps/search/pharmacie+yaounde/",
+ "MyJob": "https://cm.indeed.com/q-yaounde-l.html",
+ "Emploi": "https://cm.indeed.com/",
+ "Car": "https://www.jumia.cm/voitures/",
+ "Jeux": "https://poki.com/",
+ "Tech": "https://www.jumia.cm/telephones/",
+ "Livraison": "https://glovoapp.com/",
+ "Forma": "https://www.udemy.com/",
+ "Logement": "https://www.jumia-house.com/",
+ "Waspito": "https://waspito.com/",
+ "Moments": "https://www.tiktok.com/",
+ "Messagerie": "interne"
+};
+
+let currentService="";
+function goAd(service){
+ currentService=service;
+ let ad = PUB_LINKS[Math.floor(Math.random()*PUB_LINKS.length)];
+ window.open(ad,"_blank"); // ouvre shrinkme comme 0:01
+
+ let c=10;
+ document.getElementById('adOverlay').classList.add('active');
+ document.getElementById('count').style.display="block";
+ document.getElementById('check').style.display="none";
+ document.getElementById('btnTxt').className="btn";
+ document.getElementById('btnTxt').innerText="Bouton dans 10s...";
+
+ let timer=setInterval(()=>{
+  c--;
+  document.getElementById('count').innerText=c;
+  document.getElementById('btnTxt').innerText="Bouton dans "+c+"s...";
+  if(c<=0){
+   clearInterval(timer);
+   // COMME TA VIDEO 0:09 - AFFICHE LE CHECK + BOUTON VERT
+   document.getElementById('count').style.display="none";
+   document.getElementById('check').style.display="block";
+   let btn=document.getElementById('btnTxt');
+   btn.className="btn go";
+   btn.innerText="👉 ALLER VERS "+service.toUpperCase();
+   btn.onclick=()=>{openReal();};
+  }
+ },1000);
+}
+function openReal(){
+ closeAd();
+ if(REAL_LINKS[currentService]==="interne"){
+   document.getElementById('p-Messagerie').classList.add('active');
+ }else{
+   window.location.href = REAL_LINKS[currentService];
+ }
+}
+function closeAd(){document.getElementById('adOverlay').classList.remove('active');}
+function goHome(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));}
+</script>
+</body>
+                                           </html>
