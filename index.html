@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GELDS KAMCHAT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f0f2f5}
+.header{background:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.header b{color:#0d47a1;font-size:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:14px}
+.big-icon{background:#fff;border-radius:20px;padding:22px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08);cursor:pointer}
+.big-icon:active{transform:scale(.96)}
+.big-icon div:first-child{font-size:38px}
+.big-icon b{display:block;margin-top:10px;font-size:13px;color:#222}
+.videos{background:#000;margin:14px;border-radius:16px;padding:12px}
+.videos p{color:#fff;font-weight:900;margin-bottom:10px}
+.gridV{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v{background:#222;border-radius:12px;overflow:hidden}
+.v iframe{width:100%;height:180px;border:0}
+.v span{color:#fff;font-size:10px;padding:6px;display:block}
+.page{display:none;padding-bottom:90px}
+.page.active{display:block}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #ddd;z-index:20}
+.nav div{text-align:center;font-size:11px;color:#888;cursor:pointer}
+.nav div.active{color:#0d47a1;font-weight:bold}
+.wallet{background:#0d47a1;color:#fff;margin:14px;border-radius:18px;padding:22px;text-align:center}
+.task{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.ad{position:fixed;inset:0;background:#000000f2;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+</style>
+</head>
+<body>
+<div class="header"><b>GELDS KAMCHAT</b><span>🇨🇲 Yaoundé</span></div>
+
+<!-- ACCUEIL -->
+<div id="p-home" class="page active">
+<div class="grid">
+<div class="big-icon" onclick="window.open('https://wa.me/237000000000','_blank')"><div>💬</div><b>Messagerie</b></div>
+<div class="big-icon" onclick="window.open('https://www.booking.com/city/cm/yaounde.fr.html','_blank')"><div>🏨</div><b>Hôtel</b></div>
+<div class="big-icon" onclick="window.open('https://camerounreservation.com/listings/restaurants/','_blank')"><div>🍔</div><b>Resto</b></div>
+<div class="big-icon" onclick="window.open('https://www.mondocteur237.com/','_blank')"><div>💊</div><b>Pharma</b></div>
+<div class="big-icon" onclick="window.open('https://yango.com/cm_fr/','_blank')"><div>🚗</div><b>Car</b></div>
+<div class="big-icon" onclick="window.open('https://www.casino.org/fr-cm/','_blank')"><div>🎮</div><b>Ft Jeux</b></div>
+<div class="big-icon" onclick="window.open('https://www.jobincamer.com/','_blank')"><div>📋</div><b>Task</b></div>
+<div class="big-icon" onclick="window.open('https://ekoflash-contact.com/fr','_blank')"><div>🛵</div><b>Livraison</b></div>
+<div class="big-icon" onclick="window.open('https://www.koutchoumi.com/appartements-a-louer-a-yaounde-cameroun.html','_blank')"><div>🏠</div><b>Logement</b></div>
+</div>
+
+<div class="videos">
+<p>📺 Vidéos Yaoundé - 6 différentes</p>
+<div class="gridV">
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1851246792913670/&show_text=false" allowfullscreen></iframe><span>1. Marché Central Yaoundé</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1569449071110431/&show_text=false" allowfullscreen></iframe><span>2. Cuisine Camerounaise</span></div>
+<div class="v"><iframe src="https://www.youtube.com/embed/jNQXAC9IVRw?si=Yaounde" allowfullscreen></iframe><span>3. Yaoundé Capitale - YouTube</span></div>
+<div class="v"><iframe src="https://www.youtube.com/embed/9bZkp7q19f0?si=Yaounde" allowfullscreen></iframe><span>4. Street Food Yaoundé</span></div>
+<div class="v"><iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/watch/?v=10153231379946729&show_text=false" allowfullscreen></iframe><span>5. Actu Yaoundé FB</span></div>
+<div class="v"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe><span>6. Découverte 237</span></div>
+</div>
+</div>
+</div>
+
+<!-- MYJOB VRAI -->
+<div id="p-myjob" class="page">
+<h3 style="padding:14px">💼 MyJob - 10 tâches / jour</h3>
+<div id="tasks" style="padding:14px"></div>
+</div>
+
+<!-- WALLET VRAI -->
+<div id="p-wallet" class="page">
+<div class="wallet"><p>Mon Solde</p><h1 id="solde" style="font-size:44px">0 F</h1><p style="font-size:12px">100F/jour max</p></div>
+<div id="hist" style="padding:14px;color:#666;font-size:13px"></div>
+</div>
+
+<!-- MOI VRAI -->
+<div id="p-moi" class="page">
+<div style="padding:20px;text-align:center"><h2>👤 Mon Profil</h2><p style="margin-top:10px">GELDS KAMCHAT<br>Ya
